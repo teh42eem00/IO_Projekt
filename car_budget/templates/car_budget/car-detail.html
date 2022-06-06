@@ -1,1 +1,113 @@
-<h1>Car Detail View</h1>
+{% extends 'car_budget/base.html' %}
+{% block content %}
+
+<div class="container">
+<section class="section section-stats">
+  <div class="row">
+    <div class="col s12 m12 l4">
+      <div class="card-panel">
+        <h6 class="bold">Car Budget</h6>
+        <h1 class="bold">$3000</h1>
+      </div>
+    </div>
+    <div class="col s12 m6 l4">
+      <div class="card-panel">
+        <h6 class="bold">Budget Left</h6>
+        <h1 class="bold">$1300</h1>
+      </div>
+    </div>
+    <div class="col s12 m6 l4">
+      <div class="card-panel">
+        <h6 class="bold">Total Expenses</h6>
+        <h1 class="bold">$1700</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-expenses">
+  <div class="row">
+    <button class="btn waves-effect right">
+      <i class="material-icons white-text left">add_circle</i>
+      Add Expense
+    </button>
+  </div>
+
+  <ul class="z-depth-1">
+    <li>
+      <div class="card-panel z-depth-0 expense">
+        <div class="row">
+          <div class="col l6">
+            <span class="title">Fuel (50L)</span>
+          </div>
+          <div class="col l3">
+            <span class="title">$200</span>
+          </div>
+          <div class="col 1">
+            <span class="title bold">Refueling</span>
+          </div>
+          <a href="">
+            <i class="material-icons red-text right">close</i>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="card-panel z-depth-0 expense">
+        <div class="row">
+          <div class="col l6">
+            <span class="title">Air Conditioning Service</span>
+          </div>
+          <div class="col l3">
+            <span class="title">$500</span>
+          </div>
+          <div class="col 1">
+            <span class="title bold">Service</span>
+          </div>
+          <a href="">
+            <i class="material-icons red-text right">close</i>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="card-panel z-depth-0 expense">
+        <div class="row">
+          <div class="col l6">
+            <span class="title">Speeding ticket</span>
+          </div>
+          <div class="col l3">
+            <span class="title">$500</span>
+          </div>
+          <div class="col 1">
+            <span class="title bold">Expenses</span>
+          </div>
+          <a href="">
+            <i class="material-icons red-text right">close</i>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="card-panel z-depth-0 expense">
+        <div class="row">
+          <div class="col l6">
+            <span class="title">New tires</span>
+          </div>
+          <div class="col l3">
+            <span class="title">$500</span>
+          </div>
+          <div class="col 1">
+            <span class="title bold">Service</span>
+          </div>
+          <a href="">
+            <i class="material-icons red-text right">close</i>
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>
+</div>
+
+{% endblock %}
