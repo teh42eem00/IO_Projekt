@@ -7,19 +7,19 @@
     <div class="col s12 m12 l4">
       <div class="card-panel">
         <h6 class="bold">Car Budget</h6>
-        <h1 class="bold">$3000</h1>
+        <h1 class="bold">${{ car.budget }}</h1>
       </div>
     </div>
     <div class="col s12 m6 l4">
       <div class="card-panel">
         <h6 class="bold">Budget Left</h6>
-        <h1 class="bold">$1300</h1>
+        <h1 class="bold">${{ car.budget }}</h1>
       </div>
     </div>
     <div class="col s12 m6 l4">
       <div class="card-panel">
         <h6 class="bold">Total Expenses</h6>
-        <h1 class="bold">$1700</h1>
+        <h1 class="bold">${{ car.budget }}</h1>
       </div>
     </div>
   </div>
@@ -34,17 +34,19 @@
   </div>
 
   <ul class="z-depth-1">
+
+    {% for expense in expense_list %}
     <li>
       <div class="card-panel z-depth-0 expense">
         <div class="row">
           <div class="col l6">
-            <span class="title">Fuel (50L)</span>
+            <span class="title">{{ expense.title }}</span>
           </div>
           <div class="col l3">
-            <span class="title">$200</span>
+            <span class="title">${{ expense.amount }}</span>
           </div>
           <div class="col 1">
-            <span class="title bold">Refueling</span>
+            <span class="title bold">{{ expense.category.name }}</span>
           </div>
           <a href="">
             <i class="material-icons red-text right">close</i>
@@ -52,60 +54,7 @@
         </div>
       </div>
     </li>
-    <li>
-      <div class="card-panel z-depth-0 expense">
-        <div class="row">
-          <div class="col l6">
-            <span class="title">Air Conditioning Service</span>
-          </div>
-          <div class="col l3">
-            <span class="title">$500</span>
-          </div>
-          <div class="col 1">
-            <span class="title bold">Service</span>
-          </div>
-          <a href="">
-            <i class="material-icons red-text right">close</i>
-          </a>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="card-panel z-depth-0 expense">
-        <div class="row">
-          <div class="col l6">
-            <span class="title">Speeding ticket</span>
-          </div>
-          <div class="col l3">
-            <span class="title">$500</span>
-          </div>
-          <div class="col 1">
-            <span class="title bold">Expenses</span>
-          </div>
-          <a href="">
-            <i class="material-icons red-text right">close</i>
-          </a>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="card-panel z-depth-0 expense">
-        <div class="row">
-          <div class="col l6">
-            <span class="title">New tires</span>
-          </div>
-          <div class="col l3">
-            <span class="title">$500</span>
-          </div>
-          <div class="col 1">
-            <span class="title bold">Service</span>
-          </div>
-          <a href="">
-            <i class="material-icons red-text right">close</i>
-          </a>
-        </div>
-      </div>
-    </li>
+    {% endfor %}
   </ul>
 </section>
 </div>
