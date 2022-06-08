@@ -27,6 +27,13 @@ html{
   padding: 0.5em;
   margin-bottom: 2em;
 }
+/* Car add view */
+form ul li.category {
+  display: inline-block;
+  background-color: white;
+  padding: 5px 10px;
+  margin-right: 5px;
+}
 
 /*car detail statistics*/
 
