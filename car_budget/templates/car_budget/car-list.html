@@ -1,14 +1,28 @@
 {% extends 'car_budget/base.html' %}
 {% block content %}
 
-<div class="container">
-  <div class="nocar-wrapper center">
-    <h3 class="grey-text">Sorry, you don't have any cars, yet.</h3>
-    <a href="" class="btn-large grey">
-      <i class="material-icons white-text left">add_circle</i>
-      <span class="bold">Add car</span>
-    </a>
-  </div>
-</div>
+    <div class="container">
+        <h1>My Cars</h1>
+        <hr>
+
+        <div class="row">
+            {% for car in car_list %}
+                <div class="col s12 md6 xl3">
+                    <div class="card-panel">
+                        <h5>{{ car.name }}</h5>
+                        <a href="{% url 'detail' car.slug %}" class="btn">Visit</a>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="nocar-wrapper center">
+                    <h3 class="grey-text">Sorry, you don't have any cars, yet.</h3>
+                    <a href="{% url 'add' %}" class="btn-large grey">
+                        <i class="material-icons white-text left">add_circle</i>
+                        <span class="bold">Add car</span>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

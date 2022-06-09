@@ -2,21 +2,13 @@
 {% load static %}
 {% block content %}
 
-<div class="container">
-  <form action="" method='POST'>
-    {% csrf_token %}
-    {{ form }}
-    <label for="categoryInput">Expense Categories (hit enter after each category)</label>
-    <input type="text" name="categoryInput" id="categoryInput">
-    <input type="hidden" name="categoriesString">
-    <ul id="categoriesContainer">
+    <div class="container">
+        <form action="" method='POST'>
+            {% csrf_token %}
+            {{ form }}
 
-    </ul>
-
-    <button type="submit" class="btn">Add Car</button>
-  </form>
-</div>
-
-<script src="{% static 'js/script.js' %}"></<script>
+            <button type="submit" class="btn">Add Car</button>
+        </form>
+    </div>
 
 {% endblock %}
