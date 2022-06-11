@@ -4,6 +4,8 @@ services:
   db:
     container_name: django_psql_db
     image: postgres
+    networks:
+      - my_network
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
@@ -13,6 +15,8 @@ services:
   web:
     container_name: django_web
     build: .
+    networks:
+      - my_network
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
@@ -24,3 +28,6 @@ services:
       - POSTGRES_PASSWORD=postgres
     depends_on:
       - db
+networks:
+  my_network:
+    driver: bridge
