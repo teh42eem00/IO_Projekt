@@ -7,8 +7,6 @@ jobs:
     services:
       db:
         image: postgres
-        volumes:
-          - ./data/db:/var/lib/postgresql/data
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
