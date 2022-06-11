@@ -8,7 +8,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build python docker image
         run: docker build . --file Dockerfile --tag python-with-django:$(date +%s)
-      - name: Docker compose django and db environmen
+      - name: Docker compose django and db environment
         run: docker-compose up -d
       - name: Check if django_web is running
         run: docker inspect -f {{.State.Running}} django_web
+      - name: Run django unit tests
+        run: docker exec -it django_web python manage.py test car_budget
