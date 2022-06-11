@@ -25,6 +25,7 @@ class Car(models.Model):
         expense_list = Expense.objects.filter(car=self)
         return len(expense_list)
 
+
 class Expense(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='expenses')
     title = models.CharField(max_length=100)

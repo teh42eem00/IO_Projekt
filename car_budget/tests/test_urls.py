@@ -2,6 +2,7 @@ from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 from car_budget.views import car_list, car_detail, CarCreateView
 
+
 class TestUrls(SimpleTestCase):
     def test_list_resolving(self):
         url = reverse('list')

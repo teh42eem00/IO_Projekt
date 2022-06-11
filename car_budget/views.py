@@ -6,6 +6,7 @@ from .models import Car, Expense
 from .forms import ExpenseForm
 import json
 
+
 def car_list(request):
     cars = Car.objects.all()
     return render(request, 'car_budget/car-list.html', {'car_list': cars})
@@ -13,7 +14,7 @@ def car_list(request):
 
 def car_detail(request, car_slug):
     car = get_object_or_404(Car, slug=car_slug)
-    category_list = ['Service','Fuel','Expense']
+    category_list = ['Service', 'Fuel', 'Expense']
     if request.method == 'GET':
         return render(request, 'car_budget/car-detail.html',
                       {'car': car, 'expense_list': car.expenses.all(), 'category_list': category_list})
@@ -36,11 +37,14 @@ def car_detail(request, car_slug):
             ).save()
 
     elif request.method == 'DELETE':
-        id = json.loads(request.body)['id']
-        expense = Expense.objects.get(id=id)
-        expense.delete()
+        try:
+            id = json.loads(request.body)['id']
+            expense = Expense.objects.get(id=id)
+            expense.delete()
+        except:
+            return HttpResponse(status=404)
 
-        return HttpResponse('')
+        return HttpResponse(status=204)
 
     return HttpResponseRedirect(car_slug)
 
