@@ -15,5 +15,4 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd IO_Projekt/
-          git fetch
-          docker-compose up -d
+          ls -al
