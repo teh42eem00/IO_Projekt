@@ -2,18 +2,14 @@ name: Docker Compose Actions Workflow
 on: push
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - uses: actions/checkout@v2
       - name: Build python docker image
         run: docker build . --file Dockerfile --tag python-with-django
-      - name: Docker compose django db
-        run: docker-compose up -d db
-      - name: sleep
-        run: sleep 20
-      - name: Docker compose django web
-        run: docker-compose up -d web
+      - name: Docker compose django db and web
+        run: docker-compose up -d
       - name: Check if django_web is running
         run: docker inspect -f {{.State.Running}} django_web
       - name: Check docker processes
