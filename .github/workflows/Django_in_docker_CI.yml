@@ -7,9 +7,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-        docker build . --file Dockerfile --tag python-with-django
-        docker-compose up -d --build
-        docker inspect -f {{.State.Running}} django_web
-        sleep 10
-        docker ps
-        docker exec django_web python manage.py test car_budget
+          docker build . --file Dockerfile --tag python-with-django
+          docker-compose up -d --build
+          docker inspect -f {{.State.Running}} django_web
+          sleep 10
+          docker ps
+          docker exec django_web python manage.py test car_budget
