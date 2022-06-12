@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -72,26 +73,32 @@ WSGI_APPLICATION = 'car_budget_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_NAME'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': 'db',
-        'PORT': 5432,
-    }
-}
 
-if os.environ.get('GITHUB_WORKFLOW'):
+if 'test' in sys.argv:
+    # Configuration for test database
     DATABASES = {
         'default': {
-           'ENGINE': 'django.db.backends.postgresql',
-           'NAME': 'github_actions',
-           'USER': 'postgres',
-           'PASSWORD': 'postgres',
-           'HOST': '127.0.0.1',
-           'PORT': '5432',
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'd4gt36colvov5p',
+            'USER': 'dghdokkgbdaxof',
+            'PASSWORD': 'f1b60fc5dd5e8e3737937209d06e8778830e7d576642b83733dba06ff02773d7',
+            'HOST': 'ec2-52-48-159-67.eu-west-1.compute.amazonaws.com',
+            'PORT': 5432,
+            'TEST': {
+                'NAME': 'd4gt36colvov5p',  # This is an important entry
+            }
+        }
+    }
+else:
+    # Default configuration
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('POSTGRES_NAME'),
+            'USER': os.environ.get('POSTGRES_USER'),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+            'HOST': 'db',
+            'PORT': 5432,
         }
     }
 
