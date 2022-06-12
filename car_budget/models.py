@@ -21,9 +21,55 @@ class Car(models.Model):
         return self.budget - total_expense_amount
 
     @property
+    def total_expenses(self):
+        expense_list = Expense.objects.filter(car=self)
+        total_expense_amount = 0
+        for expense in expense_list:
+            total_expense_amount += expense.amount
+
+        return total_expense_amount
+
+    @property
     def total_transactions(self):
         expense_list = Expense.objects.filter(car=self)
-        return len(expense_list)
+        return expense_list.count()
+
+    @property
+    def fuel_stats(self):
+        expense_list = Expense.objects.filter(car=self)
+        expense_fuel = expense_list.filter(category='Fuel')
+        total_fuel_cost = 0
+        for e in expense_fuel:
+            total_fuel_cost += e.amount
+
+        if self.total_transactions > 0:
+            return float(100 * total_fuel_cost / self.total_expenses).__round__(2)
+        else:
+            return 0
+
+    @property
+    def service_stats(self):
+        expense_list = Expense.objects.filter(car=self)
+        expense_service = expense_list.filter(category='Service')
+        total_service_cost = 0
+        for e in expense_service:
+            total_service_cost += e.amount
+        if self.total_transactions > 0:
+            return float(100 * total_service_cost / self.total_expenses).__round__(2)
+        else:
+            return 0
+
+    @property
+    def other_stats(self):
+        expense_list = Expense.objects.filter(car=self)
+        expense_other = expense_list.filter(category='Expense')
+        total_other_cost = 0
+        for e in expense_other:
+            total_other_cost += e.amount
+        if self.total_transactions > 0:
+            return float(100 * total_other_cost / self.total_expenses).__round__(2)
+        else:
+            return 0
 
 
 class Expense(models.Model):
