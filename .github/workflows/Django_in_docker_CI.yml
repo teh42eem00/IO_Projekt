@@ -2,13 +2,11 @@ name: Docker Compose Actions Workflow
 on: push
 jobs:
   test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
       - name: Build python docker image
         run: docker build . --file Dockerfile --tag python-with-django
-      - name: Docker compose django db and web
-        run: docker-compose up --build -d
-      - name: Run django unit tests
-        run: docker exec django_web python manage.py test
+      - name: Docker compose django web, db and run tests
+        run: docker-compose up -d
