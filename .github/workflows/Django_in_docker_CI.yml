@@ -6,8 +6,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build python and compose web and db
-        run: |
+      - run: |
         docker build . --file Dockerfile --tag python-with-django
         docker-compose up -d --build
         docker inspect -f {{.State.Running}} django_web
