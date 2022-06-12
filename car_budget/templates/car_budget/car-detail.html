@@ -31,11 +31,11 @@
             </div>
         </section>
         <section class="section section-expenses">
-
-            <div class="col s10 m6 l4 center">{{ car.fuel_stats }}%</div>
-            <div class="col s10 m6 l4 center">{{ car.service_stats }}%</div>
-            <div class="col s10 m6 l4 center">{{ car.other_stats }}%</div>
-
+        <div class="card-panel">
+            <div class="col s10 m6 l4 center"><i class="material-icons black-text center">local_gas_station</i>{{ car.fuel_stats }}%</div>
+            <div class="col s10 m6 l4 center"><i class="material-icons black-text center">settings</i>{{ car.service_stats }}%</div>
+            <div class="col s10 m6 l4 center"><i class="material-icons black-text center">card_travel</i>{{ car.other_stats }}%</div>
+        </div>
             <div class="row">
                 <button class="btn waves-effect right modal-trigger" href="#expenseModal">
                     <i class="material-icons white-text left">add_circle</i>
