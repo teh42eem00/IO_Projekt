@@ -6,15 +6,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build python docker image
-        run: docker build . --file Dockerfile --tag python-with-django
-      - name: Docker compose django and db environment
-        run: docker-compose up -d --build
-      - name: Check if django_web is running
-        run: docker inspect -f {{.State.Running}} django_web
-      - name: Wait for db
-        run: sleep 10
-      - name: Check docker processes
-        run: docker ps
-      - name: Run django unit tests
-        run: docker exec django_web python manage.py test car_budget
+      - name: Build python and compose web and db
+        run: |
+        docker build . --file Dockerfile --tag python-with-django
+        docker-compose up -d --build
+        docker inspect -f {{.State.Running}} django_web
+        sleep 10
+        docker ps
+        docker exec django_web python manage.py test car_budget
