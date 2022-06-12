@@ -10,7 +10,5 @@ jobs:
         run: docker build . --file Dockerfile --tag python-with-django
       - name: Docker compose django db and web
         run: docker-compose up -d
-      - name: Check docker processes
-        run: docker ps
       - name: Run django unit tests
-        run: docker exec django_web python manage.py test -k
+        run: docker exec django_web python manage.py test
